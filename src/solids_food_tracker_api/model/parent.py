@@ -12,3 +12,5 @@ class Parent(db.Model):
     email = db.Column(db.String(), nullable=False, unique=True)
 
     password = db.Column(db.String(), nullable=False)
+
+    child = db.relationship('Child', backref='parents')
