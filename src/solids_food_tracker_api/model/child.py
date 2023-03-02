@@ -10,6 +10,6 @@ class Child(db.Model):
     dob = db.Column(db.Date(), nullable=False)
 
     parent_id = db.Column(
-        db.Integer(), db.ForeignKey("parents.id")
+        db.Integer(), db.ForeignKey("parents.id"), nullable=False
     )
 
