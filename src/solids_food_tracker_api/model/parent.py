@@ -13,4 +13,4 @@ class Parent(db.Model):
 
     password = db.Column(db.String(), nullable=False)
 
-    child = db.relationship('Child', backref='parents')
+    children = db.relationship('Child', backref='parent', cascade="all, delete")
