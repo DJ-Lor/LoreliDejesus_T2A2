@@ -6,4 +6,5 @@ MarkupSafe==2.1.2
 Werkzeug==2.2.3
 Flask_sqlalchemy
 Flask_marshmallow
+Marshmallow
 
