@@ -1,7 +1,7 @@
 from main import db
 
 class FoodTracker(db.Model):
-    __tablename__: "food_trackers"
+    __tablename__ = "food_trackers"
 
     id = db.Column(db.Integer(), primary_key=True)
 

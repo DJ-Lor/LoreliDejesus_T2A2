@@ -13,18 +13,14 @@ def get_children():
     return children_schema.dump(children)
 
 
-# @child.post("/")
-# def create_child():
+@child.post("/")
+def create_child():
 
-#     try:
-#         child_fields = child_schema.load(request.json)
+    child_fields = child_schema.load(request.json)
 
-#         child = Child(**child_fields)
+    child = Child(**child_fields)
 
-#         db.session.add(child)
-#         db.session.commit()
+    db.session.add(child)
+    db.session.commit()
 
-#     except:
-#         return {"message": "The information provided is incorrect, no duplicates permitted"}
-
-#     return child_schema.dump(child)
+    return child_schema.dump(child)

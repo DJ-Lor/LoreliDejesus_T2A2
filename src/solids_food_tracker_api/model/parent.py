@@ -1,7 +1,7 @@
 from main import db
 
 class Parent(db.Model):
-    __tablename__: "parents"
+    __tablename__ = "parents"
 
     id = db.Column(db.Integer(), primary_key=True)
 

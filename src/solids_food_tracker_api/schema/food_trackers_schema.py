@@ -3,6 +3,7 @@ from main import ma
 
 class FoodTrackerSchema(ma.Schema):
     class Meta:
+        ordered = True
         fields = ("id", "liked_food", "allergic_reaction", "date_eaten")
         # load_only = ["food_id", "child_id"]
 
@@ -10,4 +11,4 @@ class FoodTrackerSchema(ma.Schema):
 
 
 food_tracker_schema = FoodTrackerSchema()
-foods_tracker_schema = FoodTrackerSchema(many=True)
+food_trackers_schema = FoodTrackerSchema(many=True)

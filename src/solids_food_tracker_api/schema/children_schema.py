@@ -1,12 +1,13 @@
 from main import ma 
-
+from marshmallow import fields
 
 class ChildSchema(ma.Schema):
     class Meta:
+        ordered = True
         fields = ("id", "name", "dob", "parent", "parent_id")
         load_only = ["parent_id"]
 
-        parent = ma.Nested("ParentSchema")
+    parent = fields.Nested("ParentSchema")
 
 
 child_schema = ChildSchema()

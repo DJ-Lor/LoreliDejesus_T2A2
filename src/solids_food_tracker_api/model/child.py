@@ -1,7 +1,7 @@
 from main import db
 
 class Child(db.Model):
-    __tablename__: "children"
+    __tablename__ = "children"
 
     id = db.Column(db.Integer(), primary_key=True)
 

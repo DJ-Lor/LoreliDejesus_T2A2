@@ -25,6 +25,6 @@ def create_parent():
         db.session.commit()
 
     except:
-        return {"message": "The information provided is incorrect, no duplicates permitted"}
+        return {"message": "The information provided is incorrect, please try again"}
 
     return parent_schema.dump(parent)
