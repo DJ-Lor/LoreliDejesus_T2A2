@@ -1,13 +1,13 @@
 from main import ma 
-
+from marshmallow import fields
 
 class FoodTrackerSchema(ma.Schema):
     class Meta:
         ordered = True
-        fields = ["id", "liked_food", "allergic_reaction", "date_eaten"]
-        # load_only = ["food_id", "child_id"]
+        fields = ["id", "child_name", "liked_food", "allergic_reaction", "date_eaten", "food_id", "child_id"]
+        load_only = ["food_id", "child_id"]
 
-        # parent = ma.Nested("ParentSchema")
+    child_name = fields.Nested("ChildSchema", only=("child_name",))
 
 
 food_tracker_schema = FoodTrackerSchema()

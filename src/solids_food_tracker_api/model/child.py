@@ -13,3 +13,4 @@ class Child(db.Model):
         db.Integer(), db.ForeignKey("parents.id"), nullable=False
     )
 
+    food_trackers = db.relationship('FoodTracker', backref='child', cascade="all, delete", lazy=True)
