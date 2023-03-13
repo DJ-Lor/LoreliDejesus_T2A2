@@ -13,6 +13,17 @@ def get_parents():
     return parents_schema.dump(parents)
 
 
+
+@parent.get("/<int:id>")
+def get_parent(id):
+    parent = Parent.query.get(id)
+
+    if not parent:
+        return  { "message": "ID cannot be found. Please try again" }
+
+    return parent_schema.dump(parent)
+
+
 @parent.post("/")
 def create_parent():
 
