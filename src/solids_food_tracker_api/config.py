@@ -12,6 +12,15 @@ class Config(object):
             raise ValueError("DATABASE_URL is not set")
 
         return db_url
+    
+    @property
+    def JWT_SECRET_KEY(self):
+        secret = os.environ.get("SECRET_KEY")
+
+        if not secret:
+            raise ValueError("SECRET_KEY is not set")
+
+        return secret
 
 
 class DevelopmentConfig(Config):

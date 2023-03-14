@@ -4,9 +4,7 @@ from model.child import Child
 from model.food_tracker import FoodTracker
 from schema.children_schema import child_schema, children_schema
 from schema.food_trackers_schema import food_tracker_schema, food_trackers_schema
-from model.parent import Parent
-from schema.parents_schema import parent_schema, parents_schema
-
+from flask_jwt_extended import jwt_required
 
 
 child = Blueprint('child', __name__, url_prefix="/children")
@@ -14,12 +12,16 @@ child = Blueprint('child', __name__, url_prefix="/children")
 #child 
 
 @child.get("/")
+#Decorator to make sure the jwt is included in the request
+@jwt_required()
 def get_children():
     children = Child.query.all()
     return children_schema.dump(children)
 
 
 @child.get("/<int:id>")
+#Decorator to make sure the jwt is included in the request
+@jwt_required()
 def get_child(id):
     child = Child.query.get(id)
 
@@ -30,6 +32,8 @@ def get_child(id):
 
 
 @child.post("/")
+#Decorator to make sure the jwt is included in the request
+@jwt_required()
 def create_child():
 
     child_fields = child_schema.load(request.json)
@@ -43,6 +47,8 @@ def create_child():
 
 
 @child.put("/<int:id>")
+#Decorator to make sure the jwt is included in the request
+@jwt_required()
 def update_child(id):
 
     child_fields = child_schema.load(request.json)
@@ -61,6 +67,8 @@ def update_child(id):
 
 
 @child.delete("/<int:id>")
+#Decorator to make sure the jwt is included in the request
+@jwt_required()
 def delete_child(id):
 
     child = Child.query.get(id)
