@@ -1,9 +1,10 @@
 from flask import Blueprint, request, jsonify, abort
-from main import db, bcrypt, jwt
+from main import db, bcrypt
 from model.parent import Parent
-from schema.parents_schema import parent_schema
+from schema.parents_schema import parent_schema, parents_schema
 from flask_jwt_extended import create_access_token
 from datetime import timedelta
+
 
 auth = Blueprint('auth', __name__, url_prefix="/auth")
 
@@ -33,7 +34,7 @@ def auth_register():
     expiry = timedelta(days=1)
 
     #create the access token
-    access_token = create_access_token(identity=str(parent.id), expires_delta=expiry)
+    access_token = create_access_token(identity=parent.id, expires_delta=expiry)
 
     # return the parent email and the access token
     return jsonify(parent_schema.dump(parent))
@@ -58,7 +59,13 @@ def auth_login():
     expiry = timedelta(days=1)
 
     #create the access token
-    access_token = create_access_token(identity=str(parent.id), expires_delta=expiry)
+    access_token = create_access_token(identity=parent.id, expires_delta=expiry)
 
     # return the parent email and the access token
     return jsonify({"parent":parent.email, "token": access_token })
+
+
+@auth.get("/parents")
+def auth_get_parents():
+    parents = Parent.query.all()
+    return parents_schema.dump(parents)
