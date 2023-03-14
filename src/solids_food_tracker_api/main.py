@@ -2,10 +2,13 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from flask_jwt_extended import JWTManager
+from flask_bcrypt import Bcrypt
+
 
 db = SQLAlchemy()
 ma = Marshmallow()
 jwt = JWTManager()
+bcrypt = Bcrypt()
 
 def create_app():
     #initialise flask app

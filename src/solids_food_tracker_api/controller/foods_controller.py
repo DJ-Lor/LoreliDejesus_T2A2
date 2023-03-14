@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, abort
 from main import db
 from model.food import Food
 from schema.foods_schema import food_schema, foods_schema
@@ -28,3 +28,26 @@ def create_food():
         return {"message": "The information provided is incorrect, no duplicates permitted"}
 
     return food_schema.dump(food)
+
+
+# @food.put("/<int:id>")
+# def update_food(id):
+
+#     food_fields = food_schema.load(request.json)
+
+#     food = Food.query.get(id)
+
+#     if not food:
+#         return abort(400, description= "Item does not exist")
+    
+#     food.food_name = food_fields["food_name"]
+#     food.food_type = food_fields["food_type"]
+
+#     db.session.commit()
+    
+#     return food_schema.dump(food)
+
+
+
+
+
