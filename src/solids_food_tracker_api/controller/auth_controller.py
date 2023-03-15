@@ -37,8 +37,8 @@ def auth_register():
     access_token = create_access_token(identity=parent.id, expires_delta=expiry)
 
     # return the parent email and the access token
-    return jsonify(parent_schema.dump(parent))
-
+    return jsonify({"parent":parent_schema.dump(parent), "token": access_token, "message": "parent successfully registered!"})
+   
 
 
 #route for parent login

@@ -1,4 +1,4 @@
-from flask import Blueprint, request, abort
+from flask import Blueprint, request, abort, jsonify
 from main import db
 from model.food import Food
 from schema.foods_schema import food_schema, foods_schema
@@ -16,18 +16,25 @@ def get_foods():
 @food.post("/")
 def create_food():
 
-    try:
-        food_fields = food_schema.load(request.json)
+    food_fields = food_schema.load(request.json)
 
-        food = Food(**food_fields)
+    food = Food(**food_fields)
 
-        db.session.add(food)
-        db.session.commit()
+    food.food_name = food_fields["food_name"]
+    food.food_type = food_fields["food_type"]
 
-    except:
-        return {"message": "The information provided is incorrect, no duplicates permitted"}
+    declared_food_types = ['protein', 'dairy', 'vegetable', 'fruits', 'grains', 'others']
 
+    if food.food_type not in declared_food_types:
+        return jsonify({"error": "Invalid input. Food type options are 'protein', 'dairy', 'vegetable', 'fruits', 'grains', 'others'"}), 400
+
+    db.session.add(food)
+    db.session.commit()
+
+        
     return food_schema.dump(food)
+
+
 
 
 @food.delete("/<int:id>")

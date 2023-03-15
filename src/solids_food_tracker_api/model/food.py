@@ -11,5 +11,4 @@ class Food(db.Model):
 
     food_trackers = db.relationship('FoodTracker', backref='food', cascade="all, delete", lazy=True)
 
-
-    
+   
