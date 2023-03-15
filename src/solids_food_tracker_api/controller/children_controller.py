@@ -3,6 +3,7 @@ from main import db
 from model.child import Child
 from model.food_tracker import FoodTracker
 from model.parent import Parent
+from model.food import Food
 from schema.children_schema import child_schema, children_schema
 from schema.food_trackers_schema import food_tracker_schema, food_trackers_schema
 from flask_jwt_extended import jwt_required, get_jwt_identity
@@ -32,12 +33,19 @@ def get_child(id):
 
 
 @child.post("/")
-
+# #Decorator to make sure the jwt is included in the request
+@jwt_required()
 def create_child():
+
+    #get the user id invoking get_jwt_identity
+    parent_id = get_jwt_identity()
 
     child_fields = child_schema.load(request.json)
 
     child = Child(**child_fields)
+
+    #parent_id taken from the token
+    child.parent_id = parent_id
 
     db.session.add(child)
     db.session.commit()
@@ -98,6 +106,9 @@ def delete_child(id):
     return {"message": "Child deleted!"}
 
 
+
+
+
 #food tracker
 
 @child.get("/<int:id>/food_trackers")
@@ -137,6 +148,13 @@ def create_food_trackers(id):
     #find the child to associate the food tracker to
     child = Child.query.get(id)
 
+    #find the food to associate the food tracker to
+    food = Food.query.get(food_tracker_fields["food_id"])
+
+    #return error if food_id is not valid
+    if not food:
+        return abort(400, description= "Food_id does not exist")
+    
     #return an error if the child doesn't exist
     if not child:
         return abort(400, description= "Child does not exist")
