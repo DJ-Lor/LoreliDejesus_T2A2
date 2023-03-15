@@ -13,6 +13,24 @@ child = Blueprint('child', __name__, url_prefix="/children")
 
 #child 
 
+@child.get("/")
+# #Decorator to make sure the jwt is included in the request
+@jwt_required()
+def get_children():
+
+    #get the user id invoking get_jwt_identity
+    parent_id = get_jwt_identity()
+
+    #query children that belong to the authenticated parent
+    children = Child.query.filter_by(parent_id=parent_id).all()
+
+    if not children:
+        return { "message": "There are no child/children under this parent" }
+    
+    #return the children of the authenticated parent
+    return children_schema.dump(children)
+
+
 @child.get("/<int:id>")
 # #Decorator to make sure the jwt is included in the request
 @jwt_required()
