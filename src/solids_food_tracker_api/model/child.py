@@ -5,7 +5,7 @@ class Child(db.Model):
 
     id = db.Column(db.Integer(), primary_key=True)
 
-    child_name = db.Column(db.String(50), nullable=False)
+    child_name = db.Column(db.String(50), nullable=False, unique=True)
 
     child_dob = db.Column(db.Date(), nullable=False)
 
