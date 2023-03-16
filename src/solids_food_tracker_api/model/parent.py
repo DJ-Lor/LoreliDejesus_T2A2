@@ -13,11 +13,14 @@ class Parent(db.Model):
 
     password = db.Column(db.String(128), nullable=False)
 
+    admin = db.Column(db.Boolean(), default=False)
+
     children = db.relationship('Child', backref='parent', cascade="all, delete", lazy=True)
 
-    def __init__(self, first_name, last_name, email, password, children=None):
+    def __init__(self, first_name, last_name, email, password, admin, children=None):
         self.first_name = first_name
         self.password = bcrypt.generate_password_hash(password).decode('utf-8')
         self.last_name = last_name
         self.email = email
+        self.admin = admin
         self.children = children or []

@@ -4,6 +4,7 @@ from model.parent import Parent
 from schema.parents_schema import parent_schema, parents_schema
 from flask_jwt_extended import create_access_token
 from datetime import timedelta
+from flask_jwt_extended import jwt_required, get_jwt_identity
 
 
 auth = Blueprint('auth', __name__, url_prefix="/auth")
@@ -66,6 +67,20 @@ def auth_login():
 
 
 @auth.get("/parents")
+#Decorator to make sure the jwt is included in the request
+@jwt_required()
 def auth_get_parents():
+
+    #get the user ID invoking get_jwt_identity
+    parent_id = get_jwt_identity()
+
+    #retrieve the parent from the database based on their ID
+    parent = Parent.query.filter_by(id=parent_id).first()
+
+    #check that parent authorization is admin
+    if parent.admin == False:
+        return {"message": "no admin rights"}
+
+    #return all parents as JSON data
     parents = Parent.query.all()
     return parents_schema.dump(parents)

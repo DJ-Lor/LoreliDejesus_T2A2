@@ -2,7 +2,6 @@ from flask import Blueprint, request, abort, jsonify
 from main import db
 from model.child import Child
 from model.food_tracker import FoodTracker
-from model.parent import Parent
 from model.food import Food
 from schema.children_schema import child_schema, children_schema
 from schema.food_trackers_schema import food_tracker_schema, food_trackers_schema
