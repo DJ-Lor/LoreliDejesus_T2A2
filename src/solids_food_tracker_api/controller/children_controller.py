@@ -61,7 +61,7 @@ def create_child():
 
     child = Child(**child_fields)
 
-    #parent_id taken from the token
+    #parent_id taken from the token and associated with the child.parent_id field
     child.parent_id = parent_id
 
     db.session.add(child)

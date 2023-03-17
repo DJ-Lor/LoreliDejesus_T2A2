@@ -3,7 +3,7 @@ from controller.parents_controller import parent
 from controller.children_controller import child
 from controller.foods_controller import food
 from controller.auth_controller import auth
-from controller.food_tracker_controller import stats
+from controller.stats_controller import stats
 
 registerable_controllers = [
     home,
