@@ -1,4 +1,49 @@
+___
+## Marker API Guide
+___
 
+This is a guide on how to navigate the Solids Baby Tracker API.
+
+**Prework**: Downloaded the src/ folder, installed requirements.txt, downloaded Insomia/Postman. CLI: Flask run.
+
+1. Register parents on http://127.0.0.1:5000/auth/register. Register at least one parent as an admin. Only admins can access http://127.0.0.1:5000/auth/parents which provide the full list of registered parent details, including passwords, which is necessary to get the token after login. Please enter the following using json format:
+
+ - first_name = string
+ - last_name = string
+ - email = email format
+ - password = string
+ - admin = boolean 
+
+2. Login credentials on http://127.0.0.1:5000/auth/login. Utilise http://127.0.0.1:5000/auth/parents to acquire the credentials needed. Please enter using json format. 
+
+ - email = email format
+ - password = string
+
+3. Once logged in, create a child/children through http://127.0.0.1:5000/children/. Please enter the following using json format:
+
+ - child_name = string
+ - dob = YEAR-MONTH-DAY
+
+4. Create a few entries of Food on http://127.0.0.1:5000/foods. Food name should be unique and food_type accepted inputs are 'protein', 'dairy', 'vegetable', 'fruits', 'grains', 'others'. Food_id may be retrieved from http://127.0.0.1:5000/foods. Please enter the following using json format:
+
+ - food_name = string
+ - food_type = string
+
+5. Create a new Food_Tracker entry utilising a child_id on the route (http://127.0.0.1:5000/children/<int: child_id>/food_trackers). Child_id may be found http://127.0.0.1:5000/children/ and the parent needs to be logged in and authenticated to proceed. Please enter the following using json format:
+
+ - liked_food = boolean
+ - allergic_reaction = boolean
+ - date_eaten = YEAR-MONTH-DAY
+ - food_id = integer
+ - child_id = integer 
+
+ 6. Now that the initial entries are setup, the rest of the routes can be accessed. Please refer to **R5 API Endpoints** for the rest of the routes that can be utilised, including detail on the HTTP VERB required. 
+
+ 7. Add-on useful statistics can also be accessed in the API, utilising the database records uploaded. The intention is to help provide relevant information for parents to understand what are the most_liked, most_disliked and most_allergenic foods based on current database.  
+
+ 8. Enjoy using the API :)
+
+___
 ___
 ## R1 Identification of the problem you are trying to solve by building this particular app and R2 Why is it a problem that needs solving?  
 ___
