@@ -9,6 +9,7 @@ class Food(db.Model):
 
     food_type = db.Column(db.String(50), nullable=False)
 
+     # One-to-many relationship setup for food-to-foodtracker
     food_trackers = db.relationship('FoodTracker', backref='food', cascade="all, delete", lazy=True)
 
    

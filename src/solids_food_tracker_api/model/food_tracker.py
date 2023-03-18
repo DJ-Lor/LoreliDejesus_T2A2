@@ -11,10 +11,11 @@ class FoodTracker(db.Model):
 
     date_eaten = db.Column(db.Date(), nullable=False)
 
+    # Foreign key associated food_id
     food_id = db.Column(
         db.Integer(), db.ForeignKey("foods.id"), nullable=False
     )
-
+    # Foreign key associated child_id
     child_id = db.Column(
         db.Integer(), db.ForeignKey("children.id"), nullable=False
     )

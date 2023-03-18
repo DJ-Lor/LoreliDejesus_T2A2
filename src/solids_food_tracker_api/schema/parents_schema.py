@@ -7,9 +7,7 @@ class ParentSchema(ma.Schema):
         ordered = True
         fields = ["id", "first_name", "last_name", "email", "password", "children", "admin"]
 
-        #attribute set so as not show when invoke dump to retrieve data
-        # load_only = ["password"]
-
+    # Show chil/children fields when loading parent schema, with exclusion
     children = ma.List(fields.Nested("ChildSchema", exclude=("parent_id", "parent")))
 
 
