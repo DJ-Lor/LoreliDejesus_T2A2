@@ -521,8 +521,18 @@ ___
 ___
 
 
-## INSERT
+**Database Relationships**:
 
+
+1. Parents can have many child/children.
+
+2. Each child can only be associated with one parent account (for now, future improvement may allow multiple parent associations such as ‘mum’ and ‘dad’ can have access to the same child/children record) 
+
+3. Each child can try many food/types through the food_tracker table.
+
+4. Each food can be "tracked"(tried) many times through the food_tracker table.
+
+5. Food_tracker can only be associated to one food.
 
 
 ___
