@@ -20,7 +20,7 @@ Target market: Parents/carers who are in the process of introducing solid food f
 
 **References**:
 
-(Mikkelsen, A., Nadeau,K., Swanson, W. 2022). Retrieved from https://www.emjreviews.com/allergy-immunology/symposium/changing-the-way-babies-eat-supporting-early-allergen-feeding-around-the-world-j01121/
+Mikkelsen, A., Nadeau,K., Swanson, W. (2022). Retrieved from https://www.emjreviews.com/allergy-immunology/symposium/changing-the-way-babies-eat-supporting-early-allergen-feeding-around-the-world-j01121/
 
 ___
 
@@ -265,7 +265,7 @@ C. http://127.0.0.1:5000/stats/most_allergic
 
 ___
 
-## R6 An ERD for your app## 
+## R6 An ERD for your app
 ___
 
 
@@ -509,5 +509,5 @@ Lastly, throughout the project creation, I have kept my mind aware of what impro
 
 
 
-![trello](docs/trello_model.png)
+![trello](docs/trello.png)
 
