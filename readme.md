@@ -4,7 +4,13 @@ ___
 
 This is a guide on how to navigate the Solids Baby Tracker API.
 
-**Prework**: Downloaded the src/ folder, installed requirements.txt, downloaded Insomia/Postman. CLI: Flask run.
+**Prework**: 
+
+- Download the src/ folder 
+- Create your own venv environment 
+- Install the requirements.txt file
+- Downloaded Insomia/Postman 
+- CLI: Flask run once ready
 
 1. Register parents on http://127.0.0.1:5000/auth/register. Register at least one parent as an admin. Only admins can access http://127.0.0.1:5000/auth/parents which provide the full list of registered parent details, including passwords, which is necessary to get the token after login. Please enter the following using json format:
 
