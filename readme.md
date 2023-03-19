@@ -6,11 +6,19 @@ This is a guide on how to navigate the Solids Baby Tracker API.
 
 **Prework**: 
 
-- Download the src/ folder 
-- Create your own venv environment 
-- Install the requirements.txt file
-- Downloaded Insomia/Postman 
-- CLI: Flask run once ready
+- Download the src/ folder from Lorelidejesus_T2A2
+- Download Postman - https://www.postman.com/downloads/
+- Create your own venv environment *(cli: python3 -m venv ./venv)*
+- Install Postgresql *(cli: brew install postgresql)*
+- Activate venv *(cli: source ./venv/bin/activate)*
+- Install requirements.txt *(cli: pip install -r requirements.txt)*
+- Start Postgres *(cli: brew services restart postgresql)*
+- Create database user *(cli: createuser -s postgres)*
+- Create tables *(cli: flask db create)*
+- Run Flask *(cli: flask run)*
+
+
+____
 
 1. Register parents on http://127.0.0.1:5000/auth/register. Register at least one parent as an admin. Only admins can access http://127.0.0.1:5000/auth/parents which provide the full list of registered parent details, including passwords, which is necessary to get the token after login. Please enter the following using json format:
 
